@@ -9,7 +9,14 @@ namespace PrintTela
 {
 	class Program
 	{
-		public static Rect ROI { get; set; }
+		//{"X":1141,"Y":225,"Width":311,"Height":539,"Top":225,"Bottom":764,"Left":1141,"Right":1452,"Location":{"X":1141,"Y":225},"Size":{"Width":311,"Height":539},"TopLeft":{"X":1141,"Y":225},"BottomRight":{"X":1452,"Y":764}}
+
+		public static Rect ROI { get; set; } = new Rect {
+			X = 1141,
+			Y = 225,
+			Width = 331-15,
+			Height = 539
+		};
 		private static Random random = new Random();
 		private static Config cfg { get; set; }
 
@@ -30,10 +37,11 @@ namespace PrintTela
 			graphics.CopyFromScreen(0, 0, 0, 0, printscreen.Size);
 			using (Mat imagem = MatToBitmap(printscreen))
 			{
-				ROI = Cv2.SelectROI(imagem);
+				// ROI = Cv2.SelectROI(imagem);
+				// Console.WriteLine(JsonConvert.SerializeObject(ROI));
 				var imgFrag = new Mat(imagem, ROI);
 				Console.WriteLine("Classificação: ");
-				Console.WriteLine("1 - Vermelho, 2 - Verde");
+				Console.WriteLine("1 - Vermelho, 2 - Verde, 3 - Predição");
 				
 				var resp = Console.ReadLine();
 				int classific = int.TryParse(resp, out _) ? int.Parse(resp) : 0;
@@ -47,6 +55,9 @@ namespace PrintTela
 							break;
 						case 2:
 							Cv2.ImWrite(Path.Combine(cfg.PathVerde + RandomString(20) + ".jpg"), imgFrag);
+							break;
+						case 3:
+							Cv2.ImWrite(Path.Combine(cfg.PathPred + RandomString(20) + ".jpg"), imgFrag);
 							break;
 					}
 				}

@@ -4,6 +4,7 @@ namespace PrintTela
     {
         public string PathVermelho { get; set; }
 		public string PathVerde { get; set; }
+		public string PathPred { get; set; }
 		public int LarguraTela { get; set; }
 		public int AlturaTela { get; set; }
     }

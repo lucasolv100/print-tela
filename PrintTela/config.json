@@ -1,6 +1,7 @@
 {
-	"PathVermelho": "C:\\temp\\vermelho\\",
-	"PathVerde": "C:\\temp\\verde\\",
+	"PathVermelho": "C:\\Projetos\\print-tela\\treinamento\\vermelho\\",
+	"PathVerde": "C:\\Projetos\\print-tela\\treinamento\\verde\\",
+	"PathPred": "C:\\Projetos\\print-tela\\predicao\\",
 	"LarguraTela": 1920,
 	"AlturaTela": 1080
 }
